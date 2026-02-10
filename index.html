@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SP LAB - Scientific Market Research Institute</title>
+    <link rel="icon" type="image/png" href="logo1.png">
+    <link rel="shortcut icon" type="image/png" href="logo1.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+                linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #e5e7eb;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Carbon Fiber Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255, 255, 255, 0.005) 0px,
+                    transparent 1px,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.005) 3px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.005) 0px,
+                    transparent 1px,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.005) 3px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Animated Grid Background */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        /* Glowing Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.4), transparent);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            filter: blur(2px);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-80px) translateX(40px);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-40px) translateX(-40px);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-120px) translateX(20px);
+                opacity: 0.6;
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section - Logo Badge */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        .logo-badge {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 30px;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .badge-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid;
+            border-color: #10b981 #d4af37 #10b981 #d4af37;
+            animation: rotateBadge 8s linear infinite;
+            box-shadow: 
+                0 0 30px rgba(16, 185, 129, 0.4),
+                inset 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        @keyframes rotateBadge {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .badge-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 94%; 
+            height: 94%;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 50px rgba(0, 0, 0, 0.9),
+                inset 0 0 20px rgba(16, 185, 129, 0.1);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .badge-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transform: scale(1.15); 
+        }
+
+        .badge-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.3), transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e5e7eb 0%, #10b981 50%, #e5e7eb 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s ease-in-out infinite;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.1em;
+            color: #9ca3af;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .lab-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(212, 175, 55, 0.15));
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            border-radius: 30px;
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #10b981;
+            margin-top: 15px;
+            box-shadow: 
+                0 5px 25px rgba(16, 185, 129, 0.3),
+                inset 0 1px 3px rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .lab-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 25px;
+            padding: 8px;
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: 50px;
+            display: inline-flex;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: transparent;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #6b7280;
+        }
+
+        .lang-btn .flag {
+            font-size: 1.3em;
+            filter: grayscale(70%);
+            transition: filter 0.3s;
+        }
+
+        .lang-btn .lang-text {
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(212, 175, 55, 0.15));
+            border-color: #10b981;
+            color: #10b981;
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .lang-btn.active .flag {
+            filter: grayscale(0%);
+        }
+
+        /* Dashboard Container & Grid System */
+        .dashboard-container {
+            margin-top: 50px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            width: 100%;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(20, 20, 20, 0.8));
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(16, 185, 129, 0.2);
+            border-radius: 25px;
+            padding: 28px 30px;
+            margin-bottom: 0; 
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            animation: cardSlideIn 0.8s ease backwards;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.6),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .research-card:nth-child(1) { animation-delay: 0.1s; }
+        .research-card:nth-child(2) { animation-delay: 0.2s; }
+        .research-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) rotateX(-15deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        /* Glossy 3D Effect */
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.15), transparent);
+            transition: left 0.6s;
+        }
+
+        .research-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+            border-radius: 25px 25px 0 0;
+            pointer-events: none;
+        }
+
+        .research-card:hover::before {
+            left: 100%;
+        }
+
+        .research-card:hover {
+            transform: translateY(-12px) translateZ(30px);
+            border-color: #10b981;
+            box-shadow: 
+                0 20px 60px rgba(16, 185, 129, 0.4),
+                0 0 80px rgba(16, 185, 129, 0.2),
+                inset 0 2px 5px rgba(16, 185, 129, 0.2);
+        }
+
+        .research-card:active {
+            transform: translateY(-8px) scale(0.98);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(212, 175, 55, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 
+                0 5px 20px rgba(16, 185, 129, 0.3),
+                inset 0 2px 8px rgba(16, 185, 129, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .research-card:hover .card-icon-wrapper {
+            transform: scale(1.1) rotateY(360deg);
+            box-shadow: 
+                0 8px 30px rgba(16, 185, 129, 0.5),
+                inset 0 3px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .card-icon-img {
+            width: 65%;
+            height: 65%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.6));
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #e5e7eb, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #9ca3af;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            min-height: 80px;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.8em;
+            padding: 6px 14px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 15px;
+            color: #10b981;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-tag.gold {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+            color: #d4af37;
+        }
+        
+        .meta-tag.tiktok-color {
+            background: rgba(254, 44, 85, 0.1);
+            border-color: rgba(254, 44, 85, 0.4);
+            color: #fe2c55;
+        }
+
+        /* REVISI SCROLLING MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            /* Penambahan overflow-y: auto memungkinkan scroll pada layer modal */
+            overflow-y: auto; 
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+            /* Mengubah margin atas agar tidak terlalu mepet, dan bawah agar bisa discroll sampai habis */
+            margin: 50px auto 80px auto; 
+            padding: 40px;
+            border: 2px solid #10b981;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 550px;
+            position: relative;
+            animation: modalSlideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 25px 80px rgba(16, 185, 129, 0.4),
+                inset 0 2px 5px rgba(16, 185, 129, 0.1);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: scale(0.8) translateY(-60px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #10b981;
+            float: right;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 25px;
+            transition: all 0.3s;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .close:hover {
+            color: #d4af37;
+            transform: rotate(90deg);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+        }
+
+        .modal h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #10b981;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .modal-section {
+            background: rgba(16, 185, 129, 0.05);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #10b981;
+            box-shadow: inset 0 2px 10px rgba(16, 185, 129, 0.1);
+        }
+
+        .modal-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #10b981;
+            margin-bottom: 18px;
+            font-size: 1.4em;
+        }
+
+        .modal-section ol {
+            margin-left: 25px;
+            line-height: 2;
+        }
+
+        .modal-section li {
+            margin-bottom: 12px;
+            color: #d1d5db;
+        }
+
+        .modal-section strong {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .referral-code {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(212, 175, 55, 0.2));
+            border: 2px solid #10b981;
+            color: #10b981;
+            padding: 18px;
+            border-radius: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            font-weight: 700;
+            text-align: center;
+            margin: 25px 0;
+            box-shadow: 
+                0 8px 30px rgba(16, 185, 129, 0.4),
+                inset 0 2px 8px rgba(16, 185, 129, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #0a0a0a;
+            border: 2px solid #10b981;
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: all 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 35px rgba(16, 185, 129, 0.5);
+        }
+
+        .action-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(16, 185, 129, 0.7);
+            background: linear-gradient(135deg, #d4af37, #b8960f);
+            border-color: #d4af37;
+            color: #0a0a0a;
+        }
+
+        .action-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 70px;
+            padding: 30px;
+            color: #4b5563;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2em;
+            }
+            
+            .logo-badge {
+                width: 170px;
+                height: 170px;
+            }
+
+            .research-card {
+                padding: 24px 22px;
+            }
+            
+            .card-description {
+                min-height: auto;
+            }
+
+            .modal-content {
+                /* Penyesuaian margin mobile */
+                margin: 50px auto; 
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 15px;
+            }
+
+            .hero-title {
+                font-size: 1.8em;
+                letter-spacing: 2px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95em;
+                letter-spacing: 2px;
+            }
+            
+            .logo-badge {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .card-grid {
+                gap: 20px;
+            }
+
+            .card-title {
+                font-size: 1.2em;
+            }
+
+            .card-description {
+                font-size: 0.95em;
+            }
+
+            .lab-badge {
+                font-size: 0.85em;
+                padding: 8px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="logo-badge">
+                <div class="badge-inner">
+                    <img src="logo1.png" alt="SP LAB Scientific Badge" id="logo">
+                </div>
+            </div>
+            <h1 class="hero-title">STRUCTURE & PATTERN LAB</h1>
+            <p class="hero-subtitle" data-id="Riset Pasar Ilmiah" data-en="Scientific Market Research">Riset Pasar Ilmiah</p>
+            <div class="lab-badge">
+                <span class="lab-icon">⚗️</span>
+                <span>SNR • SND • BREAKOUT</span>
+            </div>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('id')" data-lang="id">
+                    <span class="flag"></span>
+                    <span class="lang-text">ID</span>
+                </button>
+                <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">
+                    <span class="flag"></span>
+                    <span class="lang-text">EN</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="section-title" data-id="Jaringan Mitra Trading" data-en="Trading Partner Networks">Jaringan Mitra Trading</div>
+
+            <div class="card-grid">
+                <div class="research-card" onclick="openModal('hfm')">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <img src="hfm.jpg" class="card-icon-img" alt="HFM">
+                        </div>
+                        <div class="card-title">HFM Trade</div>
+                        <div class="card-description" data-id="Platform eksekusi canggih dengan spread tingkat institusional dan pemrosesan order super cepat" data-en="Advanced execution platform with institutional-grade spreads and lightning-fast order processing">Platform eksekusi canggih dengan spread tingkat institusional dan pemrosesan order super cepat</div>
+                        <div class="card-meta">
+                            <span class="meta-tag" data-id="Mitra IB" data-en="IB Partner">Mitra IB</span>
+                            <span class="meta-tag gold" data-id="Terverifikasi" data-en="Verified">Terverifikasi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="openModal('exness')">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <img src="exness.webp" class="card-icon-img" alt="Exness">
+                        </div>
+                        <div class="card-title">Exness</div>
+                        <div class="card-description" data-id="Infrastruktur trading profesional dengan leverage fleksibel dan penyelesaian deposit instan" data-en="Professional trading infrastructure with flexible leverage and instant deposit settlement">Infrastruktur trading profesional dengan leverage fleksibel dan penyelesaian deposit instan</div>
+                        <div class="card-meta">
+                            <span class="meta-tag" data-id="Mitra IB" data-en="IB Partner">Mitra IB</span>
+                            <span class="meta-tag gold" data-id="Premium" data-en="Premium">Premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="openModal('valetax')">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <img src="valetax.jpg" class="card-icon-img" alt="Valetax">
+                        </div>
+                        <div class="card-title">Valetax</div>
+                        <div class="card-description" data-id="Solusi trading generasi berikutnya yang didukung oleh teknologi pasar terdepan" data-en="Next-generation trading solutions powered by cutting-edge market technology">Solusi trading generasi berikutnya yang didukung oleh teknologi pasar terdepan</div>
+                        <div class="card-meta">
+                            <span class="meta-tag" data-id="Mitra IB" data-en="IB Partner">Mitra IB</span>
+                            <span class="meta-tag gold" data-id="Elite" data-en="Elite">Elite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-title" data-id="Komunitas Riset" data-en="Research Community">Komunitas Riset</div>
+
+            <div class="card-grid">
+                <div class="research-card" onclick="window.open('https://t.me/SPLABID', '_blank')">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <img src="telegram.png" class="card-icon-img" alt="Telegram">
+                        </div>
+                        <div class="card-title" data-id="Lab Riset Telegram" data-en="Telegram Research Lab">Lab Riset Telegram</div>
+                        <div class="card-description" data-id="Bergabung dengan jaringan eksklusif analis pasar dan peneliti profesional" data-en="Join our exclusive network of professional market analysts and researchers">Bergabung dengan jaringan eksklusif analis pasar dan peneliti profesional</div>
+                        <div class="card-meta">
+                            <span class="meta-tag" data-id="Komunitas" data-en="Community">Komunitas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="window.open('https://chat.whatsapp.com/HK41TYpWdofH8w1pjDzCUG', '_blank')">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <img src="whatsapp.png" class="card-icon-img" alt="WhatsApp">
+                        </div>
+                        <div class="card-title" data-id="Hub Analisis WhatsApp" data-en="WhatsApp Analysis Hub">Hub Analisis WhatsApp</div>
+                        <div class="card-description" data-id="Analisis struktur pasar real-time dan diskusi metodologi trading tervalidasi" data-en="Real-time market structure analysis and validated trading methodology discussions">Analisis struktur pasar real-time dan diskusi metodologi trading tervalidasi</div>
+                        <div class="card-meta">
+                            <span class="meta-tag" data-id="Riset Langsung" data-en="Live Research">Riset Langsung</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card" onclick="window.open('https://www.tiktok.com/@structure.patern?_r=1&_t=ZS-93oGbFSYwTA', '_blank')">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <img src="tiktok.png" class="card-icon-img" alt="TikTok">
+                        </div>
+                        <div class="card-title" data-id="SP Lab TikTok" data-en="SP Lab TikTok">SP Lab TikTok</div>
+                        <div class="card-description" data-id="Konten video singkat tentang edukasi market dan struktur harga" data-en="Short video content about market education and price structure">Konten video singkat tentang edukasi market dan struktur harga</div>
+                        <div class="card-meta">
+                            <span class="meta-tag tiktok-color" data-id="Video Edukasi" data-en="Educational Video">Video Edukasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        <footer>
+            <p data-id="&copy; 2024 SP LAB Institut Riset Pasar Ilmiah" data-en="&copy; 2024 SP LAB Scientific Market Research Institute">&copy; 2024 SP LAB Institut Riset Pasar Ilmiah</p>
+            <p data-id="Presisi • Validasi • Keunggulan" data-en="Precision • Validation • Excellence">Presisi • Validasi • Keunggulan</p>
+        </footer>
+    </div>
+
+    <div id="hfmModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('hfm')">&times;</span>
+            <h2 data-id="Kemitraan HFM Trade" data-en="HFM Trade Partnership">Kemitraan HFM Trade</h2>
+            
+            <div class="modal-section">
+                <h3 data-id="✓ Akun Sudah Ada" data-en="✓ Existing Account">✓ Akun Sudah Ada</h3>
+                <ol class="modal-list-id">
+                    <li>Akses dashboard akun HFM Anda</li>
+                    <li>Navigasi ke <strong>Settings/Konfigurasi</strong></li>
+                    <li>Pilih <strong>"Change Partner"</strong> atau <strong>"Modifikasi Partner"</strong></li>
+                    <li>Masukkan kode referral IB di bawah</li>
+                    <li>Konfirmasi dan validasi perubahan</li>
+                </ol>
+                <ol class="modal-list-en" style="display:none;">
+                    <li>Access your HFM account dashboard</li>
+                    <li>Navigate to <strong>Settings/Configuration</strong></li>
+                    <li>Select <strong>"Change Partner"</strong> or <strong>"Partner Modification"</strong></li>
+                    <li>Input the IB referral code below</li>
+                    <li>Confirm and validate changes</li>
+                </ol>
+                <div class="referral-code">ID: 30469754</div>
+            </div>
+
+            <div class="modal-section">
+                <h3 data-id="⚡ Registrasi Baru" data-en="⚡ New Registration">⚡ Registrasi Baru</h3>
+                <ol class="modal-list-id">
+                    <li>Klik tombol "Daftar Sekarang" di bawah</li>
+                    <li>Lengkapi formulir registrasi</li>
+                    <li>Masukkan kode referral saat pendaftaran</li>
+                    <li>Verifikasi email dan dokumentasi</li>
+                    <li>Aktifkan akun dengan keuntungan IB</li>
+                </ol>
+                <ol class="modal-list-en" style="display:none;">
+                    <li>Click "Register Now" button below</li>
+                    <li>Complete registration form</li>
+                    <li>Enter referral code during signup</li>
+                    <li>Verify email and documentation</li>
+                    <li>Activate account with IB benefits</li>
+                </ol>
+                <div class="referral-code">REF ID: 30469754</div>
+            </div>
+
+            <button class="action-button" onclick="window.open('https://www.hfmtrade-ind.com/sv/en/?refid=30469754', '_blank')" data-id="Daftar Sekarang" data-en="Register Now">
+                Daftar Sekarang
+            </button>
+        </div>
+    </div>
+
+    <div id="exnessModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('exness')">&times;</span>
+            <h2 data-id="Kemitraan Exness" data-en="Exness Partnership">Kemitraan Exness</h2>
+            
+            <div class="modal-section">
+                <h3 data-id="✓ Akun Sudah Ada" data-en="✓ Existing Account">✓ Akun Sudah Ada</h3>
+                <ol class="modal-list-id">
+                    <li>Login ke personal area Exness</li>
+                    <li>Pilih menu <strong>"My Accounts"</strong></li>
+                    <li>Klik <strong>"Change Partner"</strong> atau <strong>"Modifikasi Mitra IB"</strong></li>
+                    <li>Masukkan kode partner di bawah</li>
+                    <li>Simpan perubahan konfigurasi</li>
+                </ol>
+                <ol class="modal-list-en" style="display:none;">
+                    <li>Login to Exness personal area</li>
+                    <li>Select <strong>"My Accounts"</strong> menu</li>
+                    <li>Click <strong>"Change Partner"</strong> or <strong>"Modify IB Partner"</strong></li>
+                    <li>Enter partner code below</li>
+                    <li>Save configuration changes</li>
+                </ol>
+                <div class="referral-code">PARTNER: dojoz1rqh9</div>
+            </div>
+
+            <div class="modal-section">
+                <h3 data-id="⚡ Registrasi Baru" data-en="⚡ New Registration">⚡ Registrasi Baru</h3>
+                <ol class="modal-list-id">
+                    <li>Klik "Daftar Sekarang" di bawah</li>
+                    <li>Buat akun dengan email Anda</li>
+                    <li>Link referral terhubung otomatis</li>
+                    <li>Verifikasi dokumentasi identitas</li>
+                    <li>Deposit dan mulai trading</li>
+                </ol>
+                <ol class="modal-list-en" style="display:none;">
+                    <li>Click "Register Now" below</li>
+                    <li>Create account with your email</li>
+                    <li>Referral link auto-connects</li>
+                    <li>Verify identity documentation</li>
+                    <li>Deposit and begin trading</li>
+                </ol>
+                <div class="referral-code">REF: dojoz1rqh9</div>
+            </div>
+
+            <button class="action-button" onclick="window.open('https://one.exnessonelink.com/a/dojoz1rqh9?source=app', '_blank')" data-id="Daftar Sekarang" data-en="Register Now">
+                Daftar Sekarang
+            </button>
+        </div>
+    </div>
+
+    <div id="valetaxModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('valetax')">&times;</span>
+            <h2 data-id="Kemitraan Valetax" data-en="Valetax Partnership">Kemitraan Valetax</h2>
+            
+            <div class="modal-section">
+                <h3 data-id="✓ Akun Sudah Ada" data-en="✓ Existing Account">✓ Akun Sudah Ada</h3>
+                <ol class="modal-list-id">
+                    <li>Akses dashboard Valetax</li>
+                    <li>Navigasi ke <strong>Account Settings</strong></li>
+                    <li>Temukan bagian <strong>"Referral Partner"</strong></li>
+                    <li>Masukkan kode referral IB</li>
+                    <li>Perbarui dan konfirmasi modifikasi</li>
+                </ol>
+                <ol class="modal-list-en" style="display:none;">
+                    <li>Access Valetax dashboard</li>
+                    <li>Navigate to <strong>Account Settings</strong></li>
+                    <li>Find <strong>"Referral Partner"</strong> section</li>
+                    <li>Input IB referral code</li>
+                    <li>Update and confirm modifications</li>
+                </ol>
+                <div class="referral-code">PARTNER: 5470420</div>
+            </div>
+
+            <div class="modal-section">
+                <h3 data-id="⚡ Registrasi Baru" data-en="⚡ New Registration">⚡ Registrasi Baru</h3>
+                <ol class="modal-list-id">
+                    <li>Klik tombol registrasi di bawah</li>
+                    <li>Lengkapi informasi personal</li>
+                    <li>Kode referral terisi otomatis</li>
+                    <li>Verifikasi akun via email</li>
+                    <li>Akun siap untuk aktivasi</li>
+                </ol>
+                <ol class="modal-list-en" style="display:none;">
+                    <li>Click registration button below</li>
+                    <li>Complete personal information</li>
+                    <li>Referral code auto-populated</li>
+                    <li>Verify account via email</li>
+                    <li>Account ready for activation</li>
+                </ol>
+                <div class="referral-code">CODE: 5470420</div>
+            </div>
+
+            <button class="action-button" onclick="window.open('https://ma.valetax.com/p/5470420', '_blank')" data-id="Daftar Sekarang" data-en="Register Now">
+                Daftar Sekarang
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Create glowing particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 25;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 6 + 3;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 12 + 10) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Language Switcher Function
+        let currentLang = localStorage.getItem('language') || 'id';
+        
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-id][data-en]').forEach(element => {
+                if (lang === 'id') {
+                    element.textContent = element.getAttribute('data-id');
+                } else {
+                    element.textContent = element.getAttribute('data-en');
+                }
+            });
+            
+            // Update modal lists
+            if (lang === 'id') {
+                document.querySelectorAll('.modal-list-id').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.modal-list-en').forEach(el => el.style.display = 'none');
+            } else {
+                document.querySelectorAll('.modal-list-id').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.modal-list-en').forEach(el => el.style.display = 'block');
+            }
+        }
+        
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage(currentLang);
+        });
+
+        // Modal functions
+        function openModal(broker) {
+            const modal = document.getElementById(broker + 'Modal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(broker) {
+            const modal = document.getElementById(broker + 'Modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // 3D tilt effect on research cards
+        document.querySelectorAll('.research-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) translateZ(30px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) translateY(0) translateZ(0)';
+            });
+        });
+
+        // Handle logo fallback
+        document.getElementById('logo').onerror = function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5em;background:linear-gradient(135deg,#10b981,#059669);border-radius:50%;color:#0a0a0a;font-weight:900;font-family:Orbitron,sans-serif;';
+            fallback.textContent = 'SP';
+            this.parentElement.appendChild(fallback);
+        };
+    </script>
+</body>
+</html>
